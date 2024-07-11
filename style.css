@@ -1,0 +1,13 @@
+*::selection {
+    background-color: #e79400;
+    color: #14150d;
+}
+
+@font-face {
+    font-family: font;
+    src: url('./font.woff');
+}
+
+* {
+    font-family: font;
+}
