@@ -1,13 +1,50 @@
-*::selection {
-    background-color: #e79400;
-    color: #14150d;
-}
-
 @font-face {
-    font-family: font;
-    src: url('./font.woff');
+   font-family: font;
+   src: url(./font.woff);
 }
 
 * {
-    font-family: font;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: font;
+}
+
+body,
+html {
+   height: 100%;
+   width: 100%;
+}
+
+main {
+   height: 100vh;
+   width: 100%;
+   display: grid;
+   place-items: center;
+   padding-inline: 5vw;
+}
+
+.text-revel {
+   font-size: 50px;
+   text-align: center;
+}
+
+.highlights {
+   position: relative;
+}
+
+.highlighted-one {
+   position: absolute;
+   top: 0;
+   right: -30px;
+   opacity: 0;
+   height: 30px;
+   width: 30px;
+   font-size: 20px;
+   font-weight: 900;
+   background-color: #c75656;
+   color: white;
+   border-radius: 50%;
+   display: grid;
+   place-items: center;
 }

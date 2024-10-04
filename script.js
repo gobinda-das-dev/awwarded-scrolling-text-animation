@@ -1,15 +1,42 @@
-const firstTl = gsap.timeline({
-    scrollTrigger: {
-        scrub: 1,
-        pin: 'main',
-        end: 'bottom -100%'
-    }
-})
+const letter = new SplitType('.text-revel', { types: 'chars' });
+const highlightedSpan = document.querySelector('.highlights');
+highlightedSpan.innerHTML += `<span class="highlighted-one">1</span>`;
 
-firstTl
-    .from('.letter', { yPercent: -20, stagger: 0.05 })
-    .from('.letter', { opacity: 0, duration: 2, stagger: 0.05 }, '<')
-    .to('.last-chunk', { color: '#c85555', duration: 2 })
-    .to('.number', { keyframes: { yPercent: [0, -50, 0], easeEach: 'none' }, duration: 2}, '<')
-    .from('.number', { opacity: 0, duration: 2 }, '<')
-    .to('p', { opacity: 0 }, '+=1')
+const scrollTl = gsap.timeline({
+   scrollTrigger: {
+      trigger: 'main',
+      scroller: 'body',
+      scrub: true,
+      pin: true
+   }
+})
+scrollTl
+   .from('.text-revel .char', {
+      yPercent: -20,
+      willChange: 'transform',
+      opacity: 0,
+      stagger: 0.05,
+   })
+   .to(highlightedSpan, { color: '#c75656' })
+   .to('.highlighted-one', {
+      keyframes: {
+         yPercent: [0, -50, 0],
+         opacity: [0, 1, 1]
+      }
+   })
+
+   
+   
+
+smoothScroll();
+function smoothScroll() {
+   const lenis = new Lenis()
+
+   lenis.on('scroll', ScrollTrigger.update)
+
+   gsap.ticker.add((time) => {
+      lenis.raf(time * 1000)
+   })
+
+   gsap.ticker.lagSmoothing(0)
+}
